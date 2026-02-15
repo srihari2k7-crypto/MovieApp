@@ -1,11 +1,8 @@
-
-
-
 package com.example.movieapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -21,44 +18,52 @@ class MainActivity : AppCompatActivity() {
         val inception = findViewById<ImageView>(R.id.imgInception)
 
         fightClub.setOnClickListener {
-            Toast.makeText(
-                this,
-                "Fight Club:\nAn insomniac office worker forms an underground fight club.",
-                Toast.LENGTH_LONG
-            ).show()
+            openDetail(
+                "Fight Club",
+                "An insomniac office worker forms an underground fight club.",
+                R.drawable.fight_club
+            )
         }
 
         shawshank.setOnClickListener {
-            Toast.makeText(
-                this,
-                "The Shawshank Redemption:\nTwo imprisoned men bond over years, finding redemption.",
-                Toast.LENGTH_LONG
-            ).show()
+            openDetail(
+                "The Shawshank Redemption",
+                "Two imprisoned men bond over years, finding redemption.",
+                R.drawable.shawshank
+            )
         }
 
         interstellar.setOnClickListener {
-            Toast.makeText(
-                this,
-                "Interstellar:\nA team travels through a wormhole to save humanity.",
-                Toast.LENGTH_LONG
-            ).show()
+            openDetail(
+                "Interstellar",
+                "A team travels through a wormhole to save humanity.",
+                R.drawable.interstellar
+            )
         }
 
         shutterIsland.setOnClickListener {
-            Toast.makeText(
-                this,
-                "Shutter Island:\nA U.S. Marshal investigates a psychiatric facility.",
-                Toast.LENGTH_LONG
-            ).show()
+            openDetail(
+                "Shutter Island",
+                "A U.S. Marshal investigates a psychiatric facility.",
+                R.drawable.shutter_island
+            )
         }
 
         inception.setOnClickListener {
-            Toast.makeText(
-                this,
-                "Inception:\nA thief steals secrets through dream-sharing technology.",
-                Toast.LENGTH_LONG
-            ).show()
+            openDetail(
+                "Inception",
+                "A thief steals secrets through dream-sharing technology.",
+                R.drawable.inception
+            )
         }
+    }
+
+    private fun openDetail(title: String, description: String, image: Int) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("title", title)
+        intent.putExtra("description", description)
+        intent.putExtra("image", image)
+        startActivity(intent)
     }
 }
 
